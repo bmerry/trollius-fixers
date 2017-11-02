@@ -1,10 +1,10 @@
 from lib2to3.fixer_base import BaseFix
-from lib2to3.fixer_util import Name, is_tuple, parenthesize, syms
+from lib2to3.fixer_util import Name, is_tuple, syms
 from lib2to3 import pytree
 
 
 class FixRaiseReturn(BaseFix):
-    #BM_compatible = True
+    BM_compatible = True
     PATTERN = """
         raise_stmt< 'raise' power=power< ('Return' | 'trollius' trailer< '.' 'Return' >)
             trailer=trailer< '(' expr=any ')' > > >

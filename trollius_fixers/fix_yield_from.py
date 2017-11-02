@@ -1,6 +1,5 @@
 from lib2to3.fixer_base import BaseFix
-from lib2to3.fixer_util import Name, syms
-from lib2to3 import pytree
+from lib2to3.fixer_util import Name
 
 
 class FixYieldFrom(BaseFix):

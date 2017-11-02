@@ -1,6 +1,5 @@
 from lib2to3.fixer_base import BaseFix
 from lib2to3.fixer_util import BlankLine, syms, token
-from lib2to3 import pytree
 
 
 class FixImportFromReturn(BaseFix):
