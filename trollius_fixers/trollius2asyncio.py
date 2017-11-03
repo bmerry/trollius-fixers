@@ -1,5 +1,3 @@
-# #!/usr/bin/env python
-
 # MIT License
 #
 # Copyright (c) 2017 Bruce Merry
@@ -22,34 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from setuptools import setup, find_packages
+import sys
+import lib2to3.main
 
-setup(
-    name='trollius-fixers',
-    version='0.1.1',
-    packages=find_packages(),
-    entry_points={
-        'console_scripts': [
-            'trollius2asyncio = trollius_fixers.trollius2asyncio:main'
-        ]
-    },
-    author='Bruce Merry',
-    description='Convert trollius code to asyncio',
-    long_description='''
-        A tool based on lib2to3 for converting code using trollius to use
-        asyncio. After installation, run *trollius2asyncio*. It works in the
-        same way as 2to3.
-        ''',
-    license='MIT',
-    keywords='2to3 asyncio trollius',
-    url='https://github.com/bmerry/trollius_fixers',
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3',
-        'Topic :: System :: Networking'
-    ]
-)
+
+def main():
+    sys.exit(lib2to3.main.main('trollius_fixers'))
