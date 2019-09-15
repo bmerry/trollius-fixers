@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2017 Bruce Merry
+# Copyright (c) 2017-2019 Bruce Merry
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Replace @trollius.coroutine with @asyncio.coroutine.
-
-This ought to be handled by fix_imports, but the lib2to3 fixer doesn't
-handle decorators.
-"""
+"""Replace @trollius.coroutine def with async def."""
 
 from lib2to3.fixer_base import BaseFix
 from lib2to3.fixer_util import Name
@@ -32,8 +28,17 @@ from lib2to3.fixer_util import Name
 
 class FixDecorator(BaseFix):
     BM_compatible = True
-    PATTERN = "decorator< '@' dotted_name< name='trollius' '.' any+ > any* >"
+    PATTERN = """
+        decorated<
+            (decorator=decorator< '@' dotted_name< 'trollius' '.' 'coroutine' > any* >
+             | decorators< decorator*
+                           decorator=decorator< '@' dotted_name< 'trollius' '.' 'coroutine' > any* > >)
+            funcdef< def='def' any* >
+        >
+    """
 
     def transform(self, node, results):
-        name = results['name']
-        name.replace(Name('asyncio', prefix=name.prefix))
+        decorator = results['decorator']
+        defn = results['def']
+        decorator.remove()
+        defn.replace(Name('async def', prefix=decorator.prefix))

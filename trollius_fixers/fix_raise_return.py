@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2017 Bruce Merry
+# Copyright (c) 2017-2019 Bruce Merry
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,10 +34,6 @@ class FixRaiseReturn(BaseFix):
 
     def transform(self, node, results):
         expr = results['expr']
-        if is_tuple(expr):
-            replacement = expr
-        else:
-            replacement = results['trailer']
-        replacement.prefix = results['power'].prefix
-        replacement.remove()
-        return pytree.Node(syms.return_stmt, [Name('return', node.prefix), replacement])
+        expr.prefix = results['power'].prefix
+        expr.remove()
+        return pytree.Node(syms.return_stmt, [Name('return', node.prefix), expr])
