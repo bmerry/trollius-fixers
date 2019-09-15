@@ -42,7 +42,7 @@ setup(
         ''',
     license='MIT',
     keywords='2to3 asyncio trollius',
-    url='https://github.com/bmerry/trollius_fixers',
+    url='https://github.com/bmerry/trollius-fixers',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
