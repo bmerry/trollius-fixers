@@ -24,9 +24,14 @@
 
 from setuptools import setup, find_packages
 
+
+with open('README.md') as f:
+    readme = f.read()
+
+
 setup(
     name='trollius-fixers',
-    version='0.1.1',
+    version='0.2',
     packages=find_packages(),
     entry_points={
         'console_scripts': [
@@ -35,16 +40,13 @@ setup(
     },
     author='Bruce Merry',
     description='Convert trollius code to asyncio',
-    long_description='''
-        A tool based on lib2to3 for converting code using trollius to use
-        asyncio. After installation, run *trollius2asyncio*. It works in the
-        same way as 2to3.
-        ''',
+    long_description=readme,
+    long_description_content_type='text/markdown',
     license='MIT',
     keywords='2to3 asyncio trollius',
     url='https://github.com/bmerry/trollius-fixers',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',

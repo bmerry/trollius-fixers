@@ -47,3 +47,17 @@ since that would alter the semantics.
 The resulting code is not necessarily well-styled e.g., the extra blank line
 in the example above. These are limitations of lib2to3 and won't be easy to fix
 without risking breaking code in corner cases.
+
+## Release history
+
+### 0.2
+
+- Drop Python 3.4 support (output code uses async and await).
+
+### 0.1.1
+
+- Add licence.
+
+### 0.1
+
+- Initial release.
