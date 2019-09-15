@@ -1,4 +1,5 @@
 /trollius_fixers.egg-info
 /dist
+/.cache
 *.pyc
 __pycache__
